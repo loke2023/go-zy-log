@@ -1,0 +1,28 @@
+basePath: /
+info:
+  contact: {}
+  description: 智能投放
+  title: 日志服务
+  version: "1.0"
+paths:
+  /pub/logs:
+    post:
+      consumes:
+      - application/json
+      description: 无返回，收到日志数据直接写入mongodb
+      parameters:
+      - description: 日志数据
+        in: body
+        name: data
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: 日志接收
+      tags:
+      - 常用接口
+swagger: "2.0"

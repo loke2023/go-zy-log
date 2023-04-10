@@ -1,0 +1,43 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "智能投放",
+        "title": "日志服务",
+        "contact": {},
+        "version": "1.0"
+    },
+    "basePath": "/",
+    "paths": {
+        "/pub/logs": {
+            "post": {
+                "description": "无返回，收到日志数据直接写入mongodb",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "常用接口"
+                ],
+                "summary": "日志接收",
+                "parameters": [
+                    {
+                        "description": "日志数据",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

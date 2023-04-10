@@ -1,0 +1,32 @@
+version: '3'
+services:
+  loggerdb:
+    container_name: loggerdb
+    image: mongo
+    restart: always
+    volumes:
+    - ../public/loggerdata:/data/db
+    expose:
+    - "27017"
+    ports:
+    - "30017:27017"
+    networks:
+      - gozylognetwork
+  go-zy-log:
+    build: ./
+    image: go-zy-log/go-zy-log
+    container_name: go-zy-log
+    restart: always
+    depends_on:
+      - loggerdb
+    ports:
+     - 25505:25505
+    entrypoint:
+     - go-zy-log
+     - --addr=:25505
+     - --mongodb=mongodb://loggerdb:27017/logs
+    networks:
+      - gozylognetwork
+networks:
+  gozylognetwork:
+                                                                        
